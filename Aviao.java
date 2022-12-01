@@ -1,7 +1,12 @@
+import java.util.ArrayList;
+
 public class Aviao extends Aeronave {
 
     private String capacidade;
     private String prefixo;  
+    private int idCompanhia;
+
+    public static ArrayList<Aviao> avioes = new ArrayList<>();
 
     public Aviao(
         int id,
@@ -9,17 +14,17 @@ public class Aviao extends Aeronave {
         String marca,
         String companhia,
         String capacidade,
-        String prefixo
+        String prefixo,
+        Companhia companhia
 
     ){
-        super(modelo,companhia);
+        super(id, modelo, marca);
         this.capacidade = capacidade;
         this.prefixo = prefixo;
     }
 
     public String getCapacidade(){
         return capacidade;
-
     }
     public void setCapacidade(String capacidade){
         this.capacidade = capacidade;
@@ -30,14 +35,25 @@ public class Aviao extends Aeronave {
     public void setPrefixo(String prefixo){
         this.prefixo = prefixo;
     }
-
-   
+    public static Aviao getAviao(int id) throws Exception{
+        for(Aviao aviao : avioes){
+            if(aviao.getId() == id){
+                return aviao;
+            }
+        }
+        throw new Exception("Avião não encontrado");
+    }
+    public static void removeAviao(int id) throws Exception{
+        Aviao aviao = getAviao(id);
+        avioes.remove(aviao);
+    }
 
     @Override
     public String toString(){
         return "Modelo: " + super.getModelo() + "\n"
-            + "Companhia" + super.getCompanhia() + "\n"
-            + "Capacidade: " + capacidade + "\n"
-            + "Prefixo: " + prefixo + "\n";
+               + "Marca: " + super.getMarca() + "\n"
+               + "Capacidade: " + capacidade + "\n"
+               + "Prefixo: " + prefixo + "\n"
+               + "Companhia: " + this.idCompanhia + "\n";
     }
 }
