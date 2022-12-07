@@ -6,7 +6,7 @@ public class Aeroporto {
         Scanner scanner = new Scanner(System.in);
         int opcao = 0;
 
-        System.out.println("SEJA BEM VINDO AO AEROPORTO JATINHO FELIZ");
+        System.out.println("BEM VINDO!!! >_<");
 
         do{
             System.out.println("==========================");
@@ -138,7 +138,7 @@ public class Aeroporto {
             System.out.println("Digite o ID do Avião");
             int id = scanner.nextInt();
             try{
-                Aviao.removeAviao(idAviao);
+                Aviao.removeAviao(aviao);
             }catch (Exception e){
                 System.out.println(e.getMessage());
             }
